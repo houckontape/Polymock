@@ -28,7 +28,7 @@ public class Avatar {
 		hauteur = 0;
 		largeur = 0;
 		zone = 1;
-		vie = nb.nextInt(15);
+		vie = 10+nb.nextInt(15-10);
 		critique = 1+nb.nextInt(15-1);
 		degat = false;
 		
@@ -105,13 +105,14 @@ public class Avatar {
 		
 		if (lancer<05) {
 			System.out.println(this.name+" une attaque critique quel artiste !!!!");
-			this.degat = true;		
+			this.degat = true;
+			a1.vie = a1.vie - 8;
 			
 		}
 		else if (lancer>05 && lancer<attaque) {
 			System.out.println(this.name+" attaque réussit ! ");
 			this.degat = true;
-			
+			a1.vie = a1.vie - 2;
 		}
 		else {
 			System.out.println(this.name+" c'est raté ");
@@ -123,7 +124,7 @@ public class Avatar {
 		largeur = largeur+pLa;
 	}
 	public void info() {
-		System.out.println("Nom= "+name+
+		System.out.println(" \n Nom= "+name+
 							"\n attaque= "+attaque+
 							"\n defense= "+defense+
 							"\n capture= "+capture+

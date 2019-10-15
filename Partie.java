@@ -32,9 +32,9 @@ public class Partie {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("voulez vous Commencez une partie ? (y/n)");
 		char rep = sc.nextLine().charAt(0);	
-		System.out.println(rep);
+		//System.out.println(rep);
 		
-		if (rep == 'y')	
+		while (rep == 'y')	
 		{
 			System.out.println("la partie commence !!!");
 			Joueur player1 = new Joueur();
@@ -48,10 +48,57 @@ public class Partie {
 			System.out.println("le Monde de "+player2.getJoueurName()+" sera defendu par "+avatar2.getName());
 			avatar1.info();
 			avatar2.info();
+			
+			//boucle du jeu 
+			player1.setEtat(true);
+			//while vie avatr1>0 et vie avatar2>0
+			while (avatar1.getVie()>0 && avatar2.getVie()>0) {
+				//System.out.println("debut de la boucle");
+				//break;
+				if(player1.getEtat()){
+					System.out.println(player1.getJoueurName()+"entrez : attaque entrer a deplacement d ?");
+					char choix=sc.nextLine().charAt(0);
+					switch (choix)
+					{
+					case 'a':
+						avatar1.combat(avatar2);
+						System.out.println("point de vie de"+avatar2.getName()+" "+avatar2.getVie());
+						player1.setEtat(false);
+						break;
+					case 'd':
+						System.out.println("vous bougez");
+					}
+				}
+				else {
+					System.out.println(player2.getJoueurName()+"entrez : attaque entrer a deplacement d ?");
+					char choix=sc.nextLine().charAt(0);
+					switch (choix)
+					{
+					case 'a':
+						avatar2.combat(avatar1);
+						System.out.println("point de vie de"+avatar1.getName()+" "+avatar1.getVie());
+						player1.setEtat(true);
+						break;
+					case 'd':
+						System.out.println("vous bougez");
+					}
+				}
+			}
+			if (avatar1.getVie()<= 0) {
+				System.out.println(player1.getJoueurName()+" votre avatar vient de perir");
+			}
+			else{
+				System.out.println(player2.getJoueurName()+" votre bien aimé "+avatar2.getName()+"vient de s'eteindre ");
+			}
+			
+			System.out.println("voulez-vous rejouez? (y/n)");
+			rep = sc.nextLine().charAt(0);
+				
 		}			
-		else {
-			System.out.println("merci et aurevoir !!!");
-		}			
+		
+		System.out.println("merci et aurevoir !!!");
+		
+		
 				
 	}
 	

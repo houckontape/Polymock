@@ -58,7 +58,7 @@ public class Joueur {
 	}
 	public void createAvatar() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println(joueurName+"ventrez le nom de votre avatar:");
+		System.out.println(joueurName+" entrez le nom de votre avatar:");
 		String avatarName = sc.nextLine();
 		this.attaquant = new Avatar(avatarName);
 		
